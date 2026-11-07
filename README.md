@@ -25,7 +25,7 @@ different ball-sport problem) can start from the same shelf.
 | `01_同题金奖论文_2022B` | 3 Gold papers for the same problem (2022) | Benchmark for scope and length; audited for what they *do not* do |
 | `02_同结构金奖论文_2025B_火炮弹道` | 13 Gold papers on projectile-ballistics structure | Structure and validation conventions |
 | `03_其他球类飞行金奖论文` | Basketball spin, table-tennis ball size, golf Magnus | Cross-sport checks of the force model |
-| `04_足球空气动力学` | Mehta 1985; Carré 2005; Goff & Carré 2012; JSME 2014; Tsukada 2008; Asai 2020; Nathan 2008 | \\(C_D(Re)\\), \\(C_L(S_p)\\), spin decay, flight time |
+| `04_足球空气动力学` | Mehta 1985; Carré 2005; Goff & Carré 2012; JSME 2014; Tsukada 2008; Asai 2020; Nathan 2008 | $C_D(Re)$, $C_L(S_p)$, spin decay, flight time |
 | `05_轨迹重建与跟踪` | Monocular/multi-camera 3-D ball reconstruction and prediction (2024–2026) | Motivation: what tracking cannot recover |
 | `06_商业系统_鹰眼` | FIFA GLT test manual (2020), FIFA EPTS manual (2025), Hawk-Eye documents | Accuracy and sampling-rate anchors (±1.5 cm, 10/25 Hz) |
 | `07_预测与不确定性方法` | Sloppy models (Gutenkunst 2007, White 2017); re-entry and missile trajectory UQ | Framing of model discrepancy and interval reporting |
@@ -41,10 +41,10 @@ different ball-sport problem) can start from the same shelf.
 
 | Quantity | Value used | Source file | Page |
 |---|---|---|---|
-| Drag crisis of a football | \\(C_D\\) 0.50 → 0.20 over \\(Re=9\times10^4\\)–\\(1.3\times10^5\\) | `04/Carre2005` | 2, 6–7 |
-| Drag at match speed | \\(C_D=0.22\\) at \\(Re=2.7\times10^5\\) and \\(3.9\times10^5\\) | `04/Carre2005` | 11–12 |
-| Drag from trajectory fits | \\(C_D\approx0.17\\) at \\(Re=2.2\\)–\\(2.8\times10^5\\) (plateau 0.17–0.22) | `04/GoffCarre2012` | 5 |
-| Lift coefficient | \\(C_L\\) = 0.21 / 0.24 / 0.29 at \\(S_p\\) = 0.18 / 0.22 / 0.34 | `04/Asai2020` | 6 |
+| Drag crisis of a football | $C_D$ 0.50 → 0.20 over $Re=9\times10^4$–$1.3\times10^5$ | `04/Carre2005` | 2, 6–7 |
+| Drag at match speed | $C_D=0.22$ at $Re=2.7\times10^5$ and $3.9\times10^5$ | `04/Carre2005` | 11–12 |
+| Drag from trajectory fits | $C_D\approx0.17$ at $Re=2.2$–$2.8\times10^5$ (plateau 0.17–0.22) | `04/GoffCarre2012` | 5 |
+| Lift coefficient | $C_L$ = 0.21 / 0.24 / 0.29 at $S_p$ = 0.18 / 0.22 / 0.34 | `04/Asai2020` | 6 |
 | Spin decay | 5–15 % per 18 m, axis unchanged | `04/Tsukada2008` | 1 |
 | Typical spin | 2.3–10.1 rev/s (power kick 1.9, curled 10.2) | `04/Tsukada2008`, `04/Carre2005` | 1; 11–12 |
 | Penalty flight time | 525 ± 64 ms (N = 88) | `12/FrontPsychol-2020` | 7 |
