@@ -54,3 +54,10 @@ reference. Keep them private; quote only short excerpts with attribution.
 
 None of the datasets contains personally identifying information beyond what their
 publishers already released.
+
+## 5. Takedown policy
+
+This archive exists for private study and for verifying the numbers in one competition
+paper. If you are a rights holder and want a file removed, open an issue on this repository
+or write to the account owner, and it will be deleted within a few days — no argument, no
+counter-notice. The same applies to any dataset whose terms are narrower than assumed here.
