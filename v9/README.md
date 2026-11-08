@@ -1,6 +1,6 @@
 # v9 — merged version (paper + statistical additions)
 
-`paper/230B_v9.pdf` — 44 pages, 17 figures, 11 tables, 24 references.
+`paper/230B_v9.pdf` — 45 pages, 18 figures, 11 tables, 26 references.
 Build: `cd paper && xelatex main && bibtex main && xelatex main && xelatex main`.
 
 ## What v9 is
@@ -16,6 +16,7 @@ statistical line (v8) that are strictly better, merged in place:
 | marginal intervals ≠ joint region, with the 0.81–0.90 factor and crossing-time Lagrange weights | Appendix F |
 | exact whole-sphere clearance test on the sampled segment (analytic quadratic minimum) | Appendix G |
 | one clause in the summary stating that the answer survives the error-model changes | Abstract |
+| **new §6.8 "Drag from real trajectories": the drag coefficient measured on 350 one-second windows of two real 2-D tracking datasets, with a synthetic control that fixes the ±0.02 noise floor; the two fixes demand a deceleration above the 95th percentile of real flights | §6.8, Fig. 15, Table — |
 
 ## What is unchanged
 

@@ -607,6 +607,61 @@ not the third digit of the point estimate.
   \label{fig:realdata}
 \end{figure}
 
+\subsection{Drag from real trajectories}
+\label{sec:realdrag}
+
+The drag coefficient is the one parameter of the model that real data could in
+principle fix, so we tried to measure it rather than assume it. In the horizontal
+plane a flying ball obeys $\dd\vect v_{xy}/\dd t=-k|\vect v|\vect v_{xy}$ with
+$k=\rho AC_D/2m$, and gravity does not enter; the solution is a straight,
+logarithmically slowing path, which we fit to every one-second window of the two
+public 2-D tracking series whose mean speed exceeds \SI{12}{m\,s^{-1}}. The
+frictionless-flight assumption is the selection criterion as well: a window that
+contains a bounce or a touch does not fit and is discarded by the residual test.
+
+The result is negative and worth reporting. From the elite-league series
+\citep{bassek2025} the $336$ surviving windows give a median $C_D=0.38$ with an
+interquartile range of $0.28$ to $0.73$; from the heavily smoothed Metrica sample \citep{metrica2020}
+the $14$ windows give $0.11$. The same estimator applied to synthetic flights
+with $C_D=0.200$, sampled at \SI{25}{Hz} with \SI{5}{mm} noise and inclinations
+up to $30^\circ$, returns $0.209$ with an interquartile range of $0.199$ to
+$0.221$ (Fig.~\ref{fig:realdrag}). The estimator is therefore sharp to $\pm0.02$
+when the data are consistent with a flight, and the factor of three between the
+two providers is a property of their tracking pipelines, not of footballs. A 2-D
+book of one-second windows cannot adjudicate between $C_D=0.19$ and $C_D=0.35$,
+which is why the paper takes the wind-tunnel plateau as a prior and not as a
+measurement.
+
+What the same windows do establish is the scale of the aerodynamic force. The
+median horizontal deceleration of a ball at \SI{25}{m\,s^{-1}} is
+\SI{13}{m\,s^{-1}} in this sample and its $95$th percentile is
+\SI{18}{m\,s^{-1}}; only $2$\,\% of the windows decelerate faster than
+\SI{22.6}{m\,s^{-1}}. That figure is what the three given coordinates demand: with
+a launch speed of \SI{31}{m\,s^{-1}} and no spin the fitted drag would have to
+decelerate the ball at exactly \SI{22.6}{m\,s^{-1}}, i.e. $2.3g$, and the
+observed $a_y/a_x=1.00$ requires that most of it act perpendicular to the flight.
+The two fixes are therefore not a typical free flight: they sit above the
+\SI{95}{}th percentile of a real, deliberately contaminated sample. This is the
+sense in which the anomalous $C_D$ belongs to the data rather than to the model.
+The fit moves $C_D$ and the transverse coefficients together to accommodate
+coordinates that no physically consistent trajectory reproduces, and the
+reported answer is conditional on that accommodation. Had the coordinates been
+consistent with a ball, the fit would have returned $C_D\approx0.2$ and the
+transverse force would have been small.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.80\textwidth]{f23-realdrag.pdf}
+  \caption{Drag coefficient recovered from one-second windows of real 2-D
+  tracking, against the estimate obtained from synthetic flights of known
+  coefficient (blue) at the same sampling rate and noise. The estimator is
+  accurate to $\pm0.02$ on consistent data, so the wide spread of the real
+  windows and the factor of three between providers measure the tracking
+  pipelines rather than the aerodynamics. The dashed line is the coefficient the
+  three given coordinates force.}
+  \label{fig:realdrag}
+\end{figure}
+
 \subsection{Validation on synthetic truths}
 \label{sec:validation}
 

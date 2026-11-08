@@ -178,4 +178,15 @@ Alan~M. Nathan.
 \newblock The effect of spin on the flight of a baseball.
 \newblock {\em American Journal of Physics}, 76(2), 2008.
 
+\bibitem{bassek2025}
+Manuel Bassek et~al.
+\newblock An integrated dataset of spatiotemporal and event data in elite
+  soccer.
+\newblock Scientific Data 12, dataset (CC-BY 4.0), 2025.
+
+\bibitem{metrica2020}
+{Metrica Sports}.
+\newblock Sample data: game 1, ball and player tracking.
+\newblock \url{https://github.com/metrica-sports/sample-data}, 2020.
+
 \end{thebibliography}

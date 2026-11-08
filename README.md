@@ -22,7 +22,7 @@ different ball-sport problem) can start from the same shelf.
 | file | version | pages | what it is |
 |---|---|---|---|
 | `paper/230B.pdf` | submitted | 40 | the paper as submitted on 2026-11-07 |
-| `v9/paper/230B_v9.pdf` | merged (v9) | 44 | submitted paper + observation-covariance model, four-arm validation, marginal-vs-joint and whole-sphere appendices |
+| `v9/paper/230B_v9.pdf` | merged (v9) | 45 | submitted paper + observation-covariance model, four-arm validation, marginal-vs-joint and whole-sphere appendices |
 | `v9/README.md` | --- | --- | what changed and where, plus provenance of every added number |
 
 The 11-page statistical rewrite that contributed the observation model is not
