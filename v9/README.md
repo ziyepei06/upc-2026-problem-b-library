@@ -1,6 +1,6 @@
 # v9 — merged version (paper + statistical additions)
 
-`paper/230B_v9.pdf` — 43 pages, 17 figures, 11 tables, 24 references.
+`paper/230B_v9.pdf` — 44 pages, 17 figures, 11 tables, 24 references.
 Build: `cd paper && xelatex main && bibtex main && xelatex main && xelatex main`.
 
 ## What v9 is
