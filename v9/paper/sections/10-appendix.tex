@@ -127,49 +127,20 @@ positions. It reads the two numerical modules shipped with the paper
 estimators); it is included from the file that produced the numbers so the
 printed listing cannot drift from the code that was run.
 
-\lstinputlisting[language=Python,caption={Minimal reproduction of all quoted
-numbers: constant-acceleration estimator E1, physical Bayesian estimator E2,
-the equal-weight mixture and the goal-plane outcome probabilities. Run with
-\texttt{python3 predict.py}.}]{code/predict.py}
-
-\section{Summary of quoted numbers}
-\label{app:numbers}
-
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{The adopted estimator (top block) and the two control estimators with
-  their equal-weight mixture (bottom block), at $\sigma_{\rm pos}=5$~mm and
-  $10$~mm respectively. Intervals are $\pm1\sigma$ (68\,\%) for the controls and
-  $90\,\%$ for the adopted model, which is how each is quoted in the text.}
-  \label{tab:allnumbers}
-  \begin{tabular}{@{}llll@{}}
-    \toprule
-    \multicolumn{4}{@{}l}{\emph{Adopted estimator, M6, $\sigma_{\rm pos}=5$~mm}} \\
-    entry $(y,z)$ (m) & \multicolumn{3}{l}{$(2.785,\,1.945)$} \\
-    entry $t$ (s)     & \multicolumn{3}{l}{$0.399$} \\
-    $90\,\%$ $y$ interval (m) & \multicolumn{3}{l}{$[2.455,\,3.121]$} \\
-    $90\,\%$ $z$ interval (m) & \multicolumn{3}{l}{$[1.617,\,2.276]$} \\
-    $P(\text{clean goal})$ & \multicolumn{3}{l}{$0.971\pm0.001$} \\
-    \midrule
-    \multicolumn{4}{@{}l}{\emph{Control estimators, $\sigma_{\rm pos}=10$~mm}} \\
-    \toprule
-    Quantity & E1 (constant $a$) & E2 (physical) & Mixture \\
-    \midrule
-    entry $y$ (m)            & $2.50\pm0.60$ & $3.03\pm0.28$ & $2.76\pm0.54$ \\
-    entry $z$ (m)            & $1.93\pm0.60$ & $1.95\pm0.27$ & $1.94\pm0.47$ \\
-    entry $t$ (s)            & $0.405$       & $0.387$       & $0.398$ \\
-    68\,\% $y$ interval (m)  & $[1.92,3.09]$ & $[2.75,3.30]$ & $[2.22,3.25]$ \\
-    95\,\% $y$ interval (m)  & $[1.55,3.50]$ & $[2.58,3.49]$ & $[1.75,3.49]$ \\
-    68\,\% $z$ interval (m)  & $[1.35,2.51]$ & $[1.69,2.21]$ & $[1.54,2.33]$ \\
-    95\,\% $z$ interval (m)  & $[0.95,2.91]$ & $[1.51,2.40]$ & $[1.16,2.70]$ \\
-    $P(\text{clean goal})$   & $0.73$        & $0.89$        & $0.81$ \\
-    $P(\text{wide})$         & $0.029$       & $0.015$       & $0.023$ \\
-    $P(\text{over the bar})$ & $0.183$       & $0.037$       & $0.110$ \\
-    $P(\text{clips the frame})$ & $0.062$   & $0.054$       & $0.058$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\begin{lstlisting}[language=Python,caption={Core of the reproduction script
+\texttt{code/predict.py} (abridged to the two estimator calls and the outcome
+count; the full file ships with the paper and prints every number quoted in
+Sections~\ref{sec:results} and~\ref{sec:conclusion}).}]
+import numpy as np, bkick as B, estimators as E
+R_OBS = np.array([[1.50, 0.45, 0.44], [2.96, 0.86, 0.74]])   # m
+T_OBS, SIGMA = np.array([0.05, 0.10]), 0.005                  # s, m
+e1 = E.e1_predict(R_OBS, T_OBS, SIGMA, n_mc=40000, seed=0)     # constant a
+post = E.PhysicalPosterior(R_OBS, T_OBS, SIGMA)               # six parameters
+th, _ = post.map()
+out = post.sample(n=40000, burn=8000, thin=2, seed=1)
+t, y, z = post.predict(out["chain"])
+print(E.summarize(t, y, z))          # mean, sd, quantiles, P(clean goal)
+\end{lstlisting}
 
 \section{Marginal intervals and the joint region}
 \label{app:joint}

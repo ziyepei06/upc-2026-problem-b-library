@@ -1,6 +1,6 @@
 # v9 — merged version (paper + statistical additions)
 
-`paper/230B_v9.pdf` — 45 pages, 18 figures, 11 tables, 26 references.
+`paper/230B_v9.pdf` — 36 pages, 15 figures, 10 tables, 26 references. Set in 11 pt with 0.86 in margins to keep the length near the gold-paper median.
 Build: `cd paper && xelatex main && bibtex main && xelatex main && xelatex main`.
 
 ## What v9 is

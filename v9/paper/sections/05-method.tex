@@ -3,7 +3,7 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.92\textwidth]{f17-workflow.pdf}
+  \includegraphics[width=0.83\textwidth]{f17-workflow.pdf}
   \caption{The prediction pipeline of Sections~\ref{sec:model}--\ref{sec:results},
   from the two fixes to the reported interval and probability. Each stage is
   checked against an independent calculation: the integrator against DOP853,
@@ -123,15 +123,19 @@ With the noise model of Eq.~\eqref{eq:noise}, the likelihood is
   \sum_{i=1}^{2}\left\|\vect r(t_i;\vect\theta)-\vect r_i\right\|^2\right],
   \label{eq:like}
 \end{equation}
-truncated by the hard bounds below. The priors are independent normals:
-$\vect v_0\sim\mathcal N((30,0,7),\operatorname{diag}(15^2,15^2,10^2))$
-m s$^{-1}$, $C_D\sim\mathcal N(0.25,0.15^2)$, and
-$\beta_i\sim\mathcal N(0,0.008^2)$ m$^{-1}$ for $i=1,2$, with the hard bounds
-$5 < v_{0x} < 60$ m\,s$^{-1}$,
-$|v_{0y}| < 30$ m\,s$^{-1}$,
-$0 < v_{0z} < 30$ m\,s$^{-1}$,
-$0 < C_D < 1$, and
-$|\beta_i| < 0.08$ m$^{-1}$; Table~\ref{tab:priors} lists them. The launch prior is broad compared
+with the priors taken as independent normals,
+\[
+  \vect v_0\sim\mathcal N\!\big((30,0,7),\operatorname{diag}(15^2,15^2,10^2)\big),\quad
+  C_D\sim\mathcal N(0.25,0.15^2),\quad
+  \beta_i\sim\mathcal N(0,0.008^2),
+\]
+in which $\vect v_0$ is in \si{m\,s^{-1}} and $\beta_i$ in \si{m^{-1}}; both are
+truncated by the hard bounds
+\[
+  5<v_{0x}<60, \quad |v_{0y}|<30, \quad 0<v_{0z}<30, \quad
+  0<C_D<1, \quad |\beta_i|<0.08 ,
+\]
+in SI units, listed in Table~\ref{tab:priors}. The launch prior is broad compared
 with the precision of the fixes, so the data, not the prior, fix the launch
 direction. The drag prior is wider than the
 wind-tunnel range $0.17$--$0.22$ \citep{carre2005,goff2012}, because the
