@@ -1,0 +1,94 @@
+%% =====================================================================
+%%  2 Problem Restatement and Notation
+%% =====================================================================
+\section{Problem Restatement and Notation}
+\label{sec:problem}
+
+The penalty mark is the origin of a Cartesian frame whose $x$-axis points at
+the centre of the goal and whose $z$-axis is vertical. The ball has radius
+$R=\SI{0.110}{m}$, and at the kick its centre is at
+$\vect{r}_0=(0,0,0.11)~\si{m}$, one radius above the ground. The goal plane is
+$x=\SI{11.0}{m}$; the opening between the posts is $|y|\le\SI{3.66}{m}$ and the
+space under the crossbar is $0\le z\le\SI{2.44}{m}$. The ball centre is
+observed twice, at $t_1=\SI{0.05}{s}$ and $t_2=\SI{0.10}{s}$:
+\begin{equation}
+  \vect{r}_1 = (1.50,\;0.45,\;0.44), \qquad
+  \vect{r}_2 = (2.96,\;0.86,\;0.74),
+  \label{eq:fixes}
+\end{equation}
+with all coordinates in metres. These numbers and the geometry of
+Figure~\ref{fig:geometry} are the entire input; Table~\ref{tab:given}
+collects them. All times are measured from the kick, and every quantity is a
+Cartesian component; SI units are used throughout.
+
+Each reported coordinate is taken to carry independent Gaussian noise of
+standard deviation $\sigma_{\rm pos}=\SI{0.005}{m}$, isotropic in the three
+directions. The coordinates are printed to \SI{0.01}{m}, so half of the last
+printed digit is the only defensible scale; the number describes the precision
+of the printed input, not a camera calibration, and it is not the
+$\pm\SI{1.5}{cm}$ accuracy required of goal-line technology
+\citep{fifa2020glt}, which bounds a certified installation rather than this
+problem's data. The choice and its consequences are examined in A6 of
+Section~\ref{sec:assumptions}. The fixes are samples of the ball centre with
+no common offset (A7), and the kick position is exact. No direction is assumed
+for the launch: the initial velocity $\vect{v}_0$ is unknown.
+
+Vectors are bold. The unknown initial velocity is
+$\vect{v}_0=(v_{0x},v_{0y},v_{0z})$; the constant acceleration used by the
+control estimator is $\vect{a}$; the ball's angular velocity is
+$\vect{\omega}=(\omega_x,\omega_y,\omega_z)$ with magnitude
+$\omega=|\vect{\omega}|$. The flight models are written in terms of the drag
+coefficient $C_D$, the lift coefficient $C_L=C_{L0}S_p$ with
+$S_p=\omega R/|\vect{v}|$ the spin parameter, the spin-axis unit vector
+$\hat{\vect{\omega}}$, and the spin-decay time $\tau$, with
+$\omega(t)=\omega_0\ee^{-t/\tau}$; the remaining constants are the air density
+$\rho=\SI{1.20}{kg/m^3}$, the ball mass $m=\SI{0.430}{kg}$, the
+cross-sectional area $A=\pi R^2$, and gravity $g=\SI{9.81}{m/s^2}$. The
+transverse-force fit that supplies the reported answer replaces the three spin
+components by two coefficients $\vect{\beta}=(\beta_1,\beta_2)$, in
+$\si{m^{-1}}$, of the transverse acceleration, so that its parameter vector is
+$\vect{\theta}=(\vect{v}_0,C_D,\vect{\beta})$; the literature-prior control uses
+$(\vect{v}_0,C_D,\vect{\omega})$, and the constant-acceleration control uses
+$(\vect{v}_0,\vect{a})$. The crossing time $t_\star$ is defined by
+$x(t_\star)=\SI{11.0}{m}$.
+
+The task is to turn these inputs into three linked outputs: a point estimate
+$(\hat y,\hat z)$ of the ball-centre crossing and the crossing time
+$\hat t_\star$; a predictive distribution for $(y,z)$ at the plane, reported
+as standard deviations and as 90 and 95 per cent intervals; and the
+probability that the ball scores. The point estimate is the most likely entry
+point, i.e.\ the mode of the predictive distribution; where that distribution
+is nearly Gaussian the mode and the mean nearly coincide, and the mean may be
+quoted. Scoring is interpreted in the strict sense of the Laws:
+the whole ball must pass inside the frame, so a clean goal requires
+$|y|\le 3.66-R=\SI{3.55}{m}$ and $R\le z\le 2.44-R=\SI{2.33}{m}$
+\citep{ifab2025}. All probabilities quoted in this paper use this convention;
+a convention based on the ball centre alone would enlarge the effective target
+by one radius on each side. Three estimators are compared: the
+transverse-force fit, which supplies the reported answer; the
+constant-acceleration estimator; and the literature-prior Bayesian fit. The
+reported uncertainty is the model envelope of
+Section~\ref{sec:assumptions}, a range of plausible answers under different
+model forms and priors rather than one estimator's interval.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Given quantities and goal geometry. Positions are ball-centre
+  coordinates in metres.}
+  \label{tab:given}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Quantity & Symbol & Value \\
+    \midrule
+    Kick instant & $t_0$ & $0$ \\
+    Ball centre at kick & $\vect{r}_0$ & $(0,0,0.11)$~m \\
+    First fix & $\vect{r}_1$ & $(1.50,0.45,0.44)$~m at $t_1=\SI{0.05}{s}$ \\
+    Second fix & $\vect{r}_2$ & $(2.96,0.86,0.74)$~m at $t_2=\SI{0.10}{s}$ \\
+    Position noise per coordinate & $\sigma_{\rm pos}$ & \SI{0.005}{m} (assumed) \\
+    Goal plane & $x$ & \SI{11.0}{m} \\
+    Goal opening & $|y|$, $z$ & $\le\SI{3.66}{m}$, $0$--\SI{2.44}{m} \\
+    Ball radius & $R$ & \SI{0.110}{m} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

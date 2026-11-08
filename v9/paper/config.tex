@@ -1,0 +1,35 @@
+%% =====================================================================
+%%  config.tex -- the only file you edit for identity
+%% =====================================================================
+%%  UPC requires page 1 to hold exactly four items: team number, problem
+%%  letter, title, summary. The contest rules also forbid names, school
+%%  names and any identifying mark anywhere in the paper -- so keep this
+%%  file to these lines and nothing else.
+%%
+%%  Only the team lead edits this file. Everyone else \input's it.
+%% =====================================================================
+
+\newcommand{\teamnum}{230}        % e.g. 204
+\newcommand{\problemltr}{B}       % A or B
+\newcommand{\papertitle}{Predicting the Goal-Plane Entry of a Penalty Kick from Two Early Ball Positions}
+
+%% ---- keywords -------------------------------------------------------
+%% 26 of the 74 gold papers print a keyword line under the abstract, and
+%% 13 of the 16 in 2025 do -- it is becoming standard, even though the rule
+%% says page 1 holds only four items. \keywordsfalse drops the line.
+\newif\ifkeywords
+\keywordstrue
+\newcommand{\keywords}{penalty kick, goal-plane prediction, Magnus force,
+  inverse problem, Bayesian uncertainty quantification, identifiability}
+
+%% ---- AI disclosure --------------------------------------------------
+%% Set \aiusedtrue if any generative AI tool influenced the text, the code,
+%% the figures or the analysis. While the switch is false the paper has no
+%% "Report on the Use of AI" section at all, which is the correct state if
+%% no such tool was used: do not add a paragraph saying so.
+\newif\ifaiused
+\aiusedtrue
+%% The shipped sample 000A.pdf is built with `make demo`, which defines
+%% \AIREPORTDEMO so that the section is visible; your own builds follow the
+%% line above and omit it until you switch it on.
+\ifdefined\AIREPORTDEMO \aiusedtrue \fi

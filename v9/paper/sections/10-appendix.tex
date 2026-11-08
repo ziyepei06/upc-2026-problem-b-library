@@ -1,0 +1,232 @@
+%% =====================================================================
+%%  10 Appendix
+%% =====================================================================
+\appendix
+
+\section{The no-bend identity}
+\label{app:nobend}
+
+Write the velocity of the ball in components, $\vect v=(v_x,v_y,v_z)$, and
+let the aerodynamic force be parallel to $\vect v$ (drag only). Then the
+horizontal part of the equation of motion reads
+\begin{equation}
+  \dot v_i = -k_d\,|\vect v|\,v_i, \qquad i=x,y ,
+  \label{eq:app-drag}
+\end{equation}
+so that
+\begin{equation}
+  \frac{\dd}{\dd t}\!\left(\frac{v_y}{v_x}\right)
+  = \frac{\dot v_y v_x - \dot v_x v_y}{v_x^{\,2}}
+  = \frac{-k_d|\vect v|\,(v_y v_x - v_x v_y)}{v_x^{\,2}} = 0 .
+  \label{eq:app-identity}
+\end{equation}
+The ratio $v_y/v_x$ is therefore a constant of the motion, and so is the
+ratio of the horizontal displacements,
+\begin{equation}
+  \frac{y(t)-y_0}{x(t)-x_0} = \frac{v_{y0}}{v_{x0}} ,
+  \label{eq:app-ratio}
+\end{equation}
+for any drag law whose direction is $-\vect v$, whatever the speed
+dependence $k_d(|\vect v|)$ is. Setting $x=x_g=\SI{11}{m}$,
+$y_0=0$, $x_0=0$ gives
+\begin{equation}
+  y_{\rm entry} = x_g\,\frac{v_{y0}}{v_{x0}} ,
+  \label{eq:app-nobend}
+\end{equation}
+which does not contain $C_D$, the density, the mass, or the spin decay. This
+is Eq.~\eqref{eq:nobend} of the main text. A force with a component
+perpendicular to $\vect v$ breaks the identity: the Magnus force contributes
+$+k_m\,\vect\omega\times\vect v$ to the acceleration, and the right-hand side
+of \eqref{eq:app-identity} becomes
+$k_m[(\vect\omega\times\vect v)_y v_x-(\vect\omega\times\vect v)_x v_y]/v_x^{2}$,
+which is not zero because $\vect\omega\times\vect v$ is perpendicular to
+$\vect v$. The measured
+entry ordinate $y=\SI{2.50}{m}$ therefore differs from
+\eqref{eq:app-nobend} only because of lift; the whole lateral answer is a
+lift measurement.
+
+\section{Uncertainty propagation for the kinematic estimator}
+\label{app:jacobian}
+
+With $\vect\theta=(v_{x0},v_{y0},v_{z0},a_x,a_y,a_z)$ and observations
+$\vect r_1=\vect r(t_1)$, $\vect r_2=\vect r(t_2)$, the model is linear in
+$\vect\theta$, so the least-squares estimate is exact. Writing
+$\Delta\vect r_k=\vect r_k-\vect r_0$,
+\begin{equation}
+  \vect r_k = t_k\,\vect v_0 + \tfrac12 t_k^{2}\,\vect a ,
+  \qquad k=1,2 ,
+\end{equation}
+the Jacobian with respect to the data is block-structured,
+\begin{equation}
+  \mathbf{J} =
+  \begin{pmatrix}
+    t_1\mathbf{I} & \tfrac12 t_1^{2}\mathbf{I}\\[2pt]
+    t_2\mathbf{I} & \tfrac12 t_2^{2}\mathbf{I}
+  \end{pmatrix}
+  \in\mathbb R^{6\times 6} ,
+\end{equation}
+and for independent per-coordinate noise the covariance of the
+estimate is $\mathbf{C}=\sigma_{\rm pos}^{2}(\mathbf{J}^{\!\top}\mathbf{J})^{-1}$.
+For the prediction $g=\bigl(t_{\rm entry},y_{\rm entry},z_{\rm entry}\bigr)$
+the gradient $\mathbf{G}=\partial g/\partial\vect\theta$ is evaluated by central
+differences on the closed-form quadratic of Section~\ref{sec:method}; the
+reported standard deviations are
+$\sigma_g=\sqrt{\operatorname{diag}(\mathbf{G}\mathbf{C}\mathbf{G}^{\!\top})}$.
+The largest entries of $\mathbf{C}$ are
+$\sigma_{a_y}=\sigma_{a_z}=\sqrt{6}\,\sigma_{\rm pos}/\Delta t^{2}$, which
+for $\sigma_{\rm pos}=\SI{10}{mm}$ and $\Delta t=\SI{0.05}{s}$ gives
+$\SI{9.8}{m/s^2}$ --- the number quoted in Section~\ref{sec:results} and the
+reason the acceleration is only marginally determined.
+
+\section{Priors, likelihood and sampling}
+\label{app:priors}
+
+The main line fits six parameters,
+$\vect\theta=(v_{x0},v_{y0},v_{z0},C_D,\beta_1,\beta_2)$, where
+$\vect\beta=\beta_1\vect e_1+\beta_2\vect e_2$ is expanded in the two unit
+vectors perpendicular to the launch velocity, Eq.~\eqref{eq:beta}. The priors
+are independent normal distributions,
+\begin{align}
+  \vect v_0 &\sim \mathcal N\!\left((30,0,7),\,
+     \operatorname{diag}(15^{2},15^{2},10^{2})\right)\ \si{m/s}, \\
+  C_D &\sim \mathcal N(0.25,\,0.15^{2}), &
+  \beta_i &\sim \mathcal N(0,\,0.008^{2})\ \si{m^{-1}},
+     \quad i=1,2 ,
+\end{align}
+truncated by $5<v_{0x}<60$, $|v_{0y}|<30$, $0<v_{0z}<30$, $0<C_D<1$ and
+$|\beta_i|<0.08\ \si{m^{-1}}$, as listed in Table~\ref{tab:priors}. The
+likelihood is Gaussian in the six position residuals at
+$\sigma_{\rm pos}=\SI{5}{mm}$ per coordinate,
+\begin{equation}
+  -2\ln\mathcal L = \sum_{k=1}^{2}
+  \frac{\lVert \vect r_k-\vect r(t_k;\vect\theta)\rVert^{2}}{\sigma_{\rm pos}^{2}},
+\end{equation}
+with $\vect r(t;\vect\theta)$ obtained by integrating
+Eq.~\eqref{eq:eom} with the classical fourth-order Runge--Kutta scheme at
+$\Delta t=\SI{5}{ms}$ up to the observation epochs and at
+$\Delta t=\SI{2.5}{ms}$ for the crossing. The maximum a posteriori point is
+found by a damped Gauss--Newton iteration on the joint residual vector of
+Eq.~\eqref{eq:residual}: six data residuals, each divided by $\sigma_{\rm pos}$,
+together with the six prior pulls. The Laplace covariance
+$\mathbf{C}=(\mathbf J^{\mathsf T}\mathbf J)^{-1}$, inflated by a factor
+$1.15$ and evaluated at the map, defines a Student-$t$ proposal with eight
+degrees of freedom; every retained draw is re-weighted by the exact
+prior-times-likelihood ratio, Eq.~\eqref{eq:weights}, so the reported
+distribution is not the proposal but the posterior. The production run keeps
+$131\,072$ weighted draws with an effective sample size of $109\,585$; it is
+the run whose quantiles appear in Tables~\ref{tab:intervals}
+and~\ref{tab:scenarios}. Section~\ref{sec:posterior} quotes the same run.
+
+\section{Reproduction script}
+\label{app:code}
+
+The listing below reproduces every number quoted in
+Sections~\ref{sec:results} and~\ref{sec:conclusion} from the two given
+positions. It reads the two numerical modules shipped with the paper
+(\texttt{bkick.py}, the integrator, and \texttt{estimators.py}, the two
+estimators); it is included from the file that produced the numbers so the
+printed listing cannot drift from the code that was run.
+
+\lstinputlisting[language=Python,caption={Minimal reproduction of all quoted
+numbers: constant-acceleration estimator E1, physical Bayesian estimator E2,
+the equal-weight mixture and the goal-plane outcome probabilities. Run with
+\texttt{python3 predict.py}.}]{code/predict.py}
+
+\section{Summary of quoted numbers}
+\label{app:numbers}
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Every number quoted in the abstract, results and conclusion, with
+  the estimator it comes from. Intervals are $\pm1\sigma$ (68\,\%) unless
+  labelled otherwise.}
+  \label{tab:allnumbers}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    Quantity & E1 (constant $a$) & E2 (physical) & Mixture \\
+    \midrule
+    entry $y$ (m)            & $2.50\pm0.60$ & $3.03\pm0.28$ & $2.76\pm0.54$ \\
+    entry $z$ (m)            & $1.93\pm0.60$ & $1.95\pm0.27$ & $1.94\pm0.47$ \\
+    entry $t$ (s)            & $0.405$       & $0.387$       & $0.398$ \\
+    68\,\% $y$ interval (m)  & $[1.92,3.09]$ & $[2.75,3.30]$ & $[2.22,3.25]$ \\
+    95\,\% $y$ interval (m)  & $[1.55,3.50]$ & $[2.58,3.49]$ & $[1.75,3.49]$ \\
+    68\,\% $z$ interval (m)  & $[1.35,2.51]$ & $[1.69,2.21]$ & $[1.54,2.33]$ \\
+    95\,\% $z$ interval (m)  & $[0.95,2.91]$ & $[1.51,2.40]$ & $[1.16,2.70]$ \\
+    $P(\text{clean goal})$   & $0.73$        & $0.89$        & $0.81$ \\
+    $P(\text{wide})$         & $0.029$       & $0.015$       & $0.023$ \\
+    $P(\text{over the bar})$ & $0.183$       & $0.037$       & $0.110$ \\
+    $P(\text{clips the frame})$ & $0.062$   & $0.054$       & $0.058$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Marginal intervals and the joint region}
+\label{app:joint}
+
+The paper quotes two marginal $90\%$ intervals, one for $y$ and one for $z$, and
+these are not a $90\%$ joint region. For an approximately Gaussian predictive
+density the distinction is elementary but worth making explicit, because the two
+constructions differ by a factor that grows with the correlation and with the
+dimension. Let $\vect\Sigma$ be the $2\times2$ predictive covariance and
+$\chi^2_{2}(p)$ the chi-square quantile with two degrees of freedom. The
+rectangle enclosed by the two marginal intervals contains
+\begin{equation}
+  P_{\rm rect}=\Pr\!\left(|y-\bar y|\le z_{1-p/2}\sigma_y,\;
+                        |z-\bar z|\le z_{1-p/2}\sigma_z\right),
+  \label{eq:rect}
+\end{equation}
+which for independent coordinates with $p=0.10$ is $0.90^2=0.81$ and rises
+towards $0.90$ only as the correlation goes to unity: two marginal $90\%$
+intervals contain between $81$ and $90\%$ of the probability, and two marginal
+$95\%$ intervals between $90$ and $95\%$. The ellipse
+$\vect\Delta^{\top}\vect\Sigma^{-1}\vect\Delta\le\chi^2_2(0.90)=4.605$ is the
+region that actually carries $90\%$. We therefore report the interval of each
+coordinate separately and never add the two numbers up as if they bounded a
+region; where a joint statement is needed, as for the clearance probability of
+Eq.~\eqref{eq:clearance}, the joint density is used directly.
+
+The crossing time is itself uncertain, and propagating it linearly would mix two
+error sources. The trajectory is advanced on a fixed step, so the crossing is
+located by a quadratic interpolation of $x(t)$ across the bracketing step. With
+step $h$ and offset $T\in[0,h)$ the interpolant is
+\begin{equation}
+  x(t)\simeq x_k+\dot x_kT+\tfrac12\ddot x_kT^2,\qquad T=t-t_k,
+\end{equation}
+and the two Lagrange weights that propagate a position error into the crossing
+coordinates are $L_1=T(2h-T)/h^2$ and $L_2=T(T-h)/2h^2$, so that the entry-point
+error is $\vect e=L_1\vect r_1+L_2\vect r_2$ and its variance is
+$(L_1^2+L_2^2)\sigma_{\rm pos}^2$. Because $L_1+L_2\ne1$ the two fixes do not
+average; the closer one carries almost all of the weight, which is why a crossing
+near the last fix is far more sensitive to that fix. Our analytic Jacobian of the
+crossing coordinates agrees with centred finite differences to
+$1.6\times10^{-8}$, and a $10^6$-sample perturbation of the two fixes reproduces
+the quoted $\sigma_y$ and $\sigma_z$ to better than $1\%$.
+
+\section{The whole-sphere clearance criterion}
+\label{app:sphere}
+
+A shot passes cleanly if the whole ball, not its centre, crosses the plane inside
+the frame. Writing the aperture as the rectangle $|y|\le b$, $0\le z\le h$ with
+$b=\SI{3.66}{m}$, $h=\SI{2.44}{m}$ and radius $R=\SI{0.110}{m}$, the ball clears
+if the centre lies in the inset rectangle $|y|\le b-R$, $R\le z\le h-R$, which is
+what Eq.~\eqref{eq:clearance} evaluates. The inset test is exact for a rectangular
+aperture and a spherical ball, because the distance from the centre to each edge
+is measured perpendicular to that edge. The two cases where it needs care are
+the posts: a ball whose centre passes outside $|y|=b$ but whose surface still
+touches the post is neither clean nor wide, and we count it as clipping, as the
+outcome table of \S\ref{sec:answer} states. When a trajectory is sampled rather
+than integrated to the plane, the same test must be applied to the segment
+between two samples: with sampling step $h$ and speed $|v|$ the surface can cross
+an edge between samples, so the clearance test is applied on the segment,
+\begin{equation}
+  d(t)^2=\big|\vect\delta_0+\vect u\,t\big|^2,\qquad
+  \vect\delta_0=\vect c_0-\vect c_{\rm edge},\quad \vect u=\vect v\,h,
+\end{equation}
+a quadratic in $t$ whose minimum on $[0,1]$ is checked analytically. The
+closed-form shortcut $g/\sqrt{1+r^2}-R$, with $r$ the slope of the trajectory in
+the $y$--$z$ plane and $g$ the distance from the centre to the nearest edge, is
+valid only when the perpendicular foot of the trajectory onto that edge lies
+inside the edge segment; otherwise the nearest point is a corner and the
+shortcut overestimates the clearance. All probabilities quoted in this paper use
+the exact segment test.

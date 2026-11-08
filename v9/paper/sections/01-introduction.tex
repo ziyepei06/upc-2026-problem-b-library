@@ -1,0 +1,85 @@
+%% =====================================================================
+%%  1 Introduction
+%% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+
+A penalty kick is decided in about half a second. The ball leaves the foot at
+about \SI{33}{m/s} and crosses the goal plane \SIrange{0.4}{0.5}{s} later, whereas
+the goalkeeper's dive direction is differentiated about \SI{115}{ms}
+\emph{before} contact and the height of the shot only \SI{245}{ms} \emph{after}
+it \citep{higueras2020}. A forecast issued between \SI{0.1}{s} and \SI{0.2}{s}
+after contact therefore arrives while the height of the shot is still being
+resolved, though the side of the dive is already fixed.
+
+The measurement layer exists. Goal-line technology must locate the ball to
+$\pm\SI{1.5}{cm}$ within one second \citep{fifa2020glt}, and Hawk-Eye's seven
+cameras per goal give a three-dimensional fix from any two of them
+\citep{hawkeye_glt}; broadcast tracking is certified at \SI{100}{Hz} but only
+for two-dimensional ball position and speed \citep{fifa2025epts}. None
+measures spin, and none predicts. The two fixes supplied with this problem are exactly such data; the
+missing piece is the inversion to a goal-plane forecast.
+
+The inversion is elementary in form: two positions with a known origin give
+the velocity by a first difference and the acceleration by a second. With
+independent position noise $\sigma_{\rm pos}=\SI{5}{mm}$---half of the last
+printed digit, as A6 explains---the velocity is fixed to
+$\sqrt2\,\sigma_{\rm pos}/\Delta t\approx\SI{0.14}{m/s}$, under half a per
+cent of the launch speed, whereas the acceleration is fixed only to
+$\sqrt6\,\sigma_{\rm pos}/\Delta t^2\approx\SI{4.9}{m/s^2}$, about 30 per
+cent of the \SI{16}{m/s^2} lateral component the data imply. The launch state
+is measured; the force is not. Six observations absorb a constant acceleration
+exactly, $\vect a=(-16.000,-16.000,-12.000)$~\si{m/s^2}, but the same six
+numbers underdetermine any richer force law. A seven-parameter model has a data Jacobian of rank six,
+with three singular values near $300$ and three near $1.8$; the data determine
+about $5.3$ parameters, and the coefficient along the instantaneous airflow is
+shrunk by only $8.7$ per cent. Moving that coefficient over
+$\pm\SI{0.075}{m^{-1}}$, a range the data cannot distinguish, moves the
+predicted entry from $y=\SI{2.56}{m}$ to \SI{2.78}{m} and from
+$z=\SI{2.12}{m}$ to \SI{1.85}{m}. Linear propagation of parameter uncertainty
+therefore does not describe the prediction error: the error is dominated by
+the choice of force law, not by the width of a parameter interval
+\citep{gutenkunst2007,white2017}.
+
+Only a force perpendicular to the velocity can bend the shot. Drag is
+antiparallel to the velocity and gravity is vertical, so a drag-only model
+preserves $v_y/v_x$ exactly and returns $y=x_g v_{0y}/v_{0x}$ for every drag
+coefficient: the gravity-only and gravity-plus-drag fits give $y=\SI{3.2170}{m}$ and
+\SI{3.2172}{m}. The bending force is the Magnus force, with measured lift
+coefficient $0.21$--$0.29$ over spin parameters $0.18$--$0.34$
+\citep{asai2020}; a non-spinning ball also feels a lateral force of comparable
+size from wake asymmetry \citep{texier2016}; spin decays by only
+\SIrange{5}{15}{\percent} over \SI{18}{m} \citep{tsukada2008}; and spin is not
+observable from positions alone \citep{achterhold2023}. Past the drag crisis,
+between $\mathrm{Re}\approx9\times10^4$ and $1.3\times10^5$, $C_D$ is nearly flat at
+$0.17$--$0.22$ \citep{carre2005,goff2012,mehta1985}, so the flight is
+well described by a constant $C_D$.
+
+Other sports have inverted the same physics with more data. Drag has been
+recovered from whole projectile trajectories \citep{florio2019} and from
+trajectory curvature \citep{jsme2014}; 99 tracked baseball pitches yield
+$C_D$, $C_L$ and the spin vector \citep{nathan2008pitchfx}; spin needs
+dedicated marker or multi-view measurement even then \citep{shorter2013};
+three-dimensional reconstruction of football flight from broadcast video is
+routine \citep{grad2026,vorobev2025}; and the penalty has been modelled
+forward \citep{parashar2022}. Those studies either measure the aerodynamic
+parameters or average over a whole flight; propagating uncertain aerodynamic
+parameters to an impact point is a separate, studied problem
+\citep{mehta2015,williamson2017}, and the present case is its
+two-observation limit.
+
+Applied to the given fixes, a six-parameter transverse-force fit of the
+launch velocity, the drag coefficient and two transverse coefficients places
+the ball centre at $(y,z)=(2.785,1.945)$~m at
+$t=\SI{0.399}{s}$, and the whole ball passes inside the frame with
+probability $0.971$. The value is conditional on the force law:
+removing the transverse force moves the entry to $y=\SI{3.22}{m}$, a
+literature-prior fit gives $3.03\pm0.28$~m, and a constant-acceleration
+extrapolation gives $2.50\pm0.60$~m with $P=0.73$. We therefore report three
+separate ranges rather than one. The model envelope unions the $90$ per cent
+intervals of the complete models, $y\in[2.125,3.121]$~m and
+$z\in[1.617,2.276]$~m. The scenario envelope unions the $95$ per cent intervals
+of twenty-five single-factor variants, four joint-stress cases and an
+independent replication, giving $y\in[2.259,3.935]$~m and
+$z\in[1.169,2.698]$~m; it is a stress range, not a confidence or credible
+interval.

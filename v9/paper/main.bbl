@@ -1,0 +1,181 @@
+\begin{thebibliography}{10}
+
+\bibitem{higueras2020}
+Alfredo Higueras-Herbada, Jos\'e~E. Lopes, David Travieso, Jorge Ib\'a\~nez
+  Gij\'on, Duarte Ara\'ujo, and David~M. Jacobs.
+\newblock Height after side: Goalkeepers detect the vertical direction of
+  association-football penalty kicks from the ball trajectory.
+\newblock {\em Frontiers in Psychology}, 11:311, 2020.
+
+\bibitem{fifa2020glt}
+{FIFA}.
+\newblock {\em FIFA Quality Programme for Goal-Line Technology: Testing Manual
+  2020}.
+\newblock F\'ed\'eration Internationale de Football Association, Zurich,
+  Switzerland, 2020.
+\newblock $\pm 1.5$~cm positional accuracy requirement; goal signal within one
+  second; 2020 edition.
+
+\bibitem{hawkeye_glt}
+{Hawk-Eye Innovations}.
+\newblock Goal line technology: How it works.
+\newblock Hawk-Eye Innovations technical note, 2~pp., n.d.
+\newblock 7 cameras per goal; 2 of 7 suffices for 3-D localisation; vendor
+  claim of millimetre accuracy; undated technical note.
+
+\bibitem{fifa2025epts}
+{FIFA}.
+\newblock {\em Test Manual for {EPTS} --- 2025 Edition}.
+\newblock F\'ed\'eration Internationale de Football Association, Zurich,
+  Switzerland, 2025.
+\newblock {VICON} 40-camera reference at 100~Hz, calibration $<1$~mm; 2-D ball
+  position and speed certification.
+
+\bibitem{gutenkunst2007}
+Ryan~N. Gutenkunst, Fergal~P. Casey, Joshua~J. Waterfall, Christopher~R. Myers,
+  and James~P. Sethna.
+\newblock Extracting falsifiable predictions from sloppy models.
+\newblock {\em Annals of the New York Academy of Sciences}, 1115:203--211,
+  2007.
+
+\bibitem{white2017}
+Andrew White, Malachi Tolman, Howard~D. Thames, Hubert~Rodney Withers, Kathy~A.
+  Mason, and Mark~K. Transtrum.
+\newblock The limitations of model-based experimental design and parameter
+  estimation in sloppy systems.
+\newblock arXiv:1602.05135v3 [q-bio.QM], 2016.
+
+\bibitem{asai2020}
+Takeshi Asai, Kaoru Kimachi, Richong Liu, Masaaki Koido, Masao Nakayama,
+  John~Eric Goff, and Sungchan Hong.
+\newblock Measurements of the flight trajectory of a spinning soccer ball and
+  the magnus force acting on it.
+\newblock In {\em Proceedings of the 13th Conference of the International
+  Sports Engineering Association}, volume~49 of {\em Proceedings}, page~88,
+  2020.
+
+\bibitem{texier2016}
+B.~Darbois~Texier, C.~Cohen, D.~Qu\'er\'e, and C.~Clanet.
+\newblock Physics of knuckleballs.
+\newblock {\em New Journal of Physics}, 18:073027, 2016.
+\newblock Non-spinning balls: the lateral force is not Magnus but
+  wake-asymmetry, with magnitude comparable to the Magnus force.
+
+\bibitem{tsukada2008}
+Takumi Tsukada and Shinji Sakurai.
+\newblock Changes of ball spin during flight of kicked soccer ball.
+\newblock In {\em Proceedings of the 26th International Conference on
+  Biomechanics in Sports (ISBS)}, page 698, Seoul, Korea, 2008.
+\newblock One-page abstract; 22 trials, spin decay 5--15\% over 18~m.
+
+\bibitem{achterhold2023}
+Jan Achterhold, Philip Tobuschat, Hao Ma, Dieter Buechler, Michael Muehlebach,
+  and Joerg Stueckler.
+\newblock Black-box vs. gray-box: A case study on learning table tennis ball
+  trajectory prediction with spin and impacts.
+\newblock In {\em Proceedings of the 5th Annual Conference on Learning for
+  Dynamics and Control (L4DC)}, 2023.
+\newblock arXiv:2305.15189.
+
+\bibitem{carre2005}
+Matt~J. Carr\'e, Simon~R. Goodwill, and Steve~J. Haake.
+\newblock Understanding the effect of seams on the aerodynamics of an
+  association football.
+\newblock {\em Proceedings of the Institution of Mechanical Engineers, Part C:
+  Journal of Mechanical Engineering Science}, 219(7):657--666, 2005.
+
+\bibitem{goff2012}
+John~Eric Goff and Matt~J. Carr\'e.
+\newblock Investigations into soccer aerodynamics via trajectory analysis and
+  dust experiments.
+\newblock {\em Procedia Engineering}, 34:158--163, 2012.
+\newblock 9th Conference of the International Sports Engineering Association
+  (ISEA).
+
+\bibitem{mehta1985}
+Rabindra~D. Mehta.
+\newblock Aerodynamics of sports balls.
+\newblock {\em Annual Review of Fluid Mechanics}, 17:151--189, 1985.
+
+\bibitem{florio2019}
+B.~J. Florio, R.~McKibbin, C.~Braham, J.~R. Ockendon, and C.~P. Please.
+\newblock Estimating transonic drag.
+\newblock {\em ANZIAM Journal}, 59:M1--M29, 2019.
+\newblock MISG2016 study report; drag coefficient estimation from trajectory
+  data for projectiles, including the transonic drag rise.
+
+\bibitem{jsme2014}
+K.~Kouno et~al.
+\newblock Estimation of aerodynamic coefficients of a ball in sports using
+  characteristics of its trajectory.
+\newblock {\em Transactions of the JSME (in Japanese)}, 80(814), 2014.
+\newblock Whole-trajectory (flight distance, maximum height) versus local
+  (curvature, torsion) inverse estimates of $C_D$ and $C_L$; verified from the
+  article PDF, Bull.\ JSME / Trans.\ JSME.
+
+\bibitem{nathan2008pitchfx}
+A.~M. Nathan.
+\newblock Analysis of {PITCHf/x} pitched baseball trajectories, 2008.
+\newblock Preprint, 9 December 2007 (revised 2008); extracts $C_D$, $C_L$ and
+  the spin vector from 99 tracked pitches, i.e.\ the same inverse problem as
+  here for a different ball.
+
+\bibitem{shorter2013}
+K.~Shorter and N.~Smith.
+\newblock Comparison of two methods for calculating 3-dimensional ball spin,
+  and its application to soccer kicking.
+\newblock In {\em Proceedings of the 31st International Society of Biomechanics
+  in Sports Conference (ISBS)}, 2013.
+\newblock Paper B2-3, ID111; cross-product versus SVD estimators of spin axis
+  and rate from Vicon marker data.
+
+\bibitem{grad2026}
+{\L}.~Grad, K.~M. Czajkowski, and A.~Varashylau.
+\newblock Physics-based {3D} ball trajectory reconstruction from monocular
+  soccer video: a multi-model benchmark, 2026.
+\newblock Preprint; seven arc models from gravity-only parabolas to full
+  drag--Magnus flight, fitted to monocular broadcast video.
+
+\bibitem{vorobev2025}
+D.~Vorobev, A.~Prosvetov, and K.~Elhadji~Daou.
+\newblock Real-time localization of a soccer ball from a single camera, 2025.
+\newblock arXiv:2506.07981; multi-mode state model for 3-D ball trajectory
+  reconstruction from a single broadcast camera.
+
+\bibitem{parashar2022}
+S.~Parashar, A.~Arora, and S.~Gadge.
+\newblock Modelling the perfect penalty kick, 2022.
+\newblock Student modelling report, 7 November 2022; computes the initial
+  velocity and spin needed to place a penalty beyond the goalkeeper's reach.
+
+\bibitem{mehta2015}
+P.~M. Mehta, M.~Kubicek, E.~Minisci, and M.~Vasile.
+\newblock Debris re-entry modeling using high dimensional derivative based
+  uncertainty quantification.
+\newblock In {\em AAS/AIAA Space Flight Mechanics Meeting, AAS 15-557}, 2015.
+\newblock Propagates uncertain aerodynamic parameters to impact-point
+  dispersion for a ballistic trajectory.
+
+\bibitem{williamson2017}
+T.~Williamson, S.~Bi, M.~Vasile, and M.~Fossati.
+\newblock Gaussian mixture--unscented transform propagation during re-entry
+  fragmentation for impact uncertainty quantification.
+\newblock In {\em Proceedings of the ESA Space Debris Conference (SDC9)}, 2017.
+\newblock Non-Gaussian impact-point distributions from uncertain entry states;
+  motivates moment-based propagation of a landing point.
+
+\bibitem{ifab2025}
+{International Football Association Board}.
+\newblock {\em Laws of the Game 2025/26}.
+\newblock The International Football Association Board, Zurich, Switzerland,
+  2025.
+\newblock Law 1 (field), Law 2 (ball), Law 14 (penalty kick); verified: 11~m
+  penalty mark, 7.32~m $\times$ 2.44~m goal, 68--70~cm circumference,
+  410--450~g, 0.6--1.1~atm.
+
+\bibitem{nathan2008}
+Alan~M. Nathan.
+\newblock The effect of spin on the flight of a baseball.
+\newblock {\em American Journal of Physics}, 76(2), 2008.
+
+\end{thebibliography}

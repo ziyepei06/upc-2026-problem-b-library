@@ -1,0 +1,164 @@
+%% =====================================================================
+%%  preamble.tex -- packages, page style, notation macros
+%% =====================================================================
+%%  Do not rebuild this file for every paper: the typography here matches
+%%  the conventions measured across the 74 Gold Medal papers (12 pt serif,
+%%  Letter, 1-inch margins, single column, numbered sections, booktabs
+%%  tables, bracketed numeric citations). Switch to two columns only if you
+%%  have a reason -- 18 of 74 gold papers do, 56 do not.
+%%
+%%  Two-column variant: in main.tex change
+%%      \documentclass[12pt,letterpaper]{article}
+%%  to
+%%      \documentclass[12pt,letterpaper,twocolumn]{article}
+%%  and set \geometry{...} margins to 0.75in. Figures then need
+%%  \begin{figure*} for full width.
+%% =====================================================================
+
+% ---------- page geometry & typography -------------------------------
+\usepackage[letterpaper,margin=0.95in,headheight=14pt,headsep=16pt]{geometry}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.55}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.72}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 3pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.0}
+
+% ---------- math ------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{siunitx}
+\sisetup{detect-all,per-mode=symbol,exponent-product=\times}
+% Products of units use a thin space (siunitx default). For half-high dots, uncomment:
+% \sisetup{inter-unit-product=\cdot}
+
+% ---------- floats, tables, figures ----------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf,justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage[section]{placeins}
+
+% ---------- lists, code, links ---------------------------------------
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\usepackage{xcolor}
+\usepackage{listings}
+% Dark, saturated syntax colours. Pastel themes wash out on paper and in
+% photocopies; these stay deep enough to print, while the keyword weight
+% (bold) keeps the structure readable when the PDF is printed in greyscale.
+\definecolor{codekw}{HTML}{1A5FB4}   % strong blue: keywords
+\definecolor{codecm}{HTML}{2E7D32}   % strong green: comments
+\definecolor{codestr}{HTML}{A63A1E}  % rust: strings
+\definecolor{codenum}{HTML}{555555}  % grey: line numbers
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
+        numbers=left,numberstyle=\tiny\color{codenum},columns=fullflexible,
+        captionpos=b,showstringspaces=false,
+        keywordstyle=\color{codekw}\bfseries,
+        commentstyle=\color{codecm}\itshape}
+% Strings stay black on purpose: a long Python docstring is one string, and
+% painting ten lines of prose is noise, not information. Uncomment to colour
+% them:  stringstyle=\color{codestr}
+% ---------- verbatim blocks for the AI report ------------------------
+% Prompts and model outputs are pasted as-is; lstlisting keeps characters
+% such as _, %, \ and { from breaking the build.
+\lstdefinestyle{aiquote}{basicstyle=\ttfamily\footnotesize,breaklines=true,
+        frame=leftline,framerule=0.4pt,columns=fullflexible,
+        showstringspaces=false,xleftmargin=1.2em,framesep=4pt,
+        aboveskip=0.4em,belowskip=0.8em}
+
+\usepackage[numbers,sort&compress]{natbib}
+%% Links stay black: a judge reads a printed copy, where dark-blue numbers in
+%% the text look like an accident. Set colourlinks=false if the PDF is read on
+%% screen and you want the navigation to be visible.
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,
+            urlcolor=blue!45!black]{hyperref}
+
+% ---------- running head: TEAM NUMBER ON EVERY PAGE ------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Team \teamnum}
+\fancyhead[R]{\small Problem \problemltr}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\small Team \teamnum}%
+  \fancyhead[R]{\small Problem \problemltr}%
+  \fancyfoot[C]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}}
+
+% ---------- notation macros: use these everywhere --------------------
+%% One symbol, one meaning, defined once. Add project symbols here rather
+%% than redefining them in sections; a merged paper with two meanings for
+%% one symbol is the most common consistency defect.
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\order}[1]{\mathcal{O}\!\left(#1\right)}
+% --- superscript size --------------------------------------------------
+% The default script size (8 pt against 11 pt body, 73 %) makes unit
+% exponents such as s^{-1} look heavy next to the base letters.  Set the
+% first level to 64 % and the second to 46 %.
+\DeclareMathSizes{10.95}{10.95}{7}{5}   % 11 pt body (this template)
+\DeclareMathSizes{12}{12}{7.8}{5.6}     % if you switch to 12 pt
+
+% Compact negative exponent for units: \inv gives ^{-1} with the spaces on
+% both sides of the minus removed, so "m s\inv" sets as m s^-1 instead of
+% the loose "m s - 1" that a plain ^{-1} produces at script size.
+% Compact negative exponent for units: the math minus keeps its full
+% advance at script size, so a plain ^{-1} sets as a long dash floating away
+% from the digit.  \inv scales the minus horizontally to 65 %, keeps it on the
+% script axis and closes the spacing, so "m s\inv" reads as m s^-1 while the
+% PDF still contains a real minus character.
+\newcommand{\inv}{\textsuperscript{\scalebox{0.65}[1]{$-$}1}}
+
+% siunitx v3 provides \qty and \unit already -- do not redefine them.
+
+% ---------- section spacing tuned for 20-28 page papers --------------
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.2ex plus .3ex minus .2ex}{0.7ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+
+% ---------- table of contents -----------------------------------------
+%% 50 of the 74 gold papers (68 %) print a Contents page straight after the
+%% summary sheet, so the template ships one; delete \tableofcontents in
+%% main.tex if the team prefers a paper without it.
+\usepackage{tocloft}
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+\renewcommand{\cftaftertoctitle}{\par\vspace{0.4em}\hrule\vspace{0.8em}}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\setlength{\cftbeforesecskip}{3pt}
+\setlength{\cftbeforesubsecskip}{0.5pt}
+\setlength{\cftsecnumwidth}{2.2em}
+\setlength{\cftsubsecindent}{2.2em}
+\setlength{\cftsubsecnumwidth}{2.8em}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{1.2}
+
+% ---------- an "answer box" for the one number a subsection is about --
+%% Optional but effective: judges should never have to hunt for a number.
+\newcommand{\keyresult}[1]{%
+  \begin{center}\fbox{\parbox{0.9\textwidth}{\centering #1}}\end{center}}
+\setlength{\emergencystretch}{2.5em}

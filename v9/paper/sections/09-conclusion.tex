@@ -1,0 +1,52 @@
+%% =====================================================================
+%%  9 Conclusion
+%%  Three answers: the crossing point, the uncertainty statement, the design.
+%% =====================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+Three results answer the problem posed. The first is the crossing point: from
+the two measured positions at \SI{0.05}{s} and \SI{0.10}{s}, the ball reaches
+the goal plane at $y=\SI{2.785}{m}$, $z=\SI{1.945}{m}$ at
+$t=\SI{0.399}{s}$, \SI{0.87}{m} inside the right post and \SI{0.50}{m} below
+the crossbar, with \SI{90}{\percent} intervals $y\in[2.455,3.121]$~m and
+$z\in[1.617,2.276]$~m. The probability that the whole ball passes inside the
+frame is $P(\text{goal}) = 0.971$, with a Monte Carlo standard error of
+$0.001$; the six-parameter transverse-force model is fitted by damped
+Gauss--Newton least squares to the six given coordinates at an assumed position
+noise of \SI{5}{mm}, and its two transverse coefficients are effective
+coefficients for whichever lateral force acts.
+
+The second result is the uncertainty statement, and it is deliberately wider
+than a statistical interval. Three ranges are reported and kept apart. The
+\SI{90}{\percent} interval of the adopted model is the statistical one. The
+model envelope unions the calibrated intervals of the two complete models,
+$y\in[2.125,3.121]$~m and $z\in[1.617,2.276]$~m, and answers the question that
+model form, not sampling, dominates the error budget. The scenario envelope
+unions \SI{95}{\percent} intervals over twenty-five single-factor variants, four
+joint-stress cases and one replication, $y\in[2.259,3.935]$~m and
+$z\in[1.169,2.698]$~m, and is a stress range rather than a probability
+statement. None of the three is a confidence interval. The calibration
+experiment is the reason for preferring it. A nominal \SI{90}{\percent}
+interval from the five-parameter model that the calibration tests is nearly
+correctly sized in $y$ but too narrow in $z$ by a factor $\lambda_z=4.94$, a signature of the vertical force the
+model does not contain, and no statistical correction applied to that interval
+would repair a missing force. A reader who needs a probability statement can
+have one only conditional on a model; a reader who needs a range that survives
+the choice of model has the envelope, and the paper gives both while labelling
+which is which.
+
+The third result concerns the observation, not the answer. At the adopted
+\SI{5}{mm} noise the two timings of the problem give a lateral uncertainty of
+\SI{211}{mm}, while fixes at \SI{0.11}{s} and \SI{0.31}{s} reduce it to
+\SI{12}{mm}, a factor of \num{18} (at the conservative \SI{10}{mm} the same
+comparison is \SI{288}{mm} against \SI{22}{mm}). The fit and its covariance
+cost \SI{8}{ms} plus \SI{0.5}{ms}, so the prediction is available about
+\SI{0.11}{s} after the kick, \SI{135}{ms} before a goalkeeper can resolve
+height. An independently written free-parameter analysis---a seven-parameter
+spin-vector fit with its own sampler---places the crossing within \SI{3}{mm}
+of the reported point and its goal probability within \num{0.002}, so the
+answer is not an artefact of one parameterisation. What generalises from the
+penalty kick is the ordering of the three results: the point is the cheapest
+to compute, the range is the honest deliverable when the flight is only
+partly observed, and the observation design controls both.

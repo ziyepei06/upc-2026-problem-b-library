@@ -1,0 +1,153 @@
+%% =====================================================================
+%%  3 Assumptions and Their Consequences
+%% =====================================================================
+\section{Assumptions and Their Consequences}
+\label{sec:assumptions}
+
+Every answer in this paper is conditional on the eight assumptions below. Each
+is stated, justified against the literature or the problem data, and followed
+by the change in the answer if it fails. Where the change can be measured by
+rerunning an estimator with the effect altered, the measured value is quoted;
+where it requires a separate estimate, the estimate is given in one line.
+A1--A5 concern the flight model, A6--A7 the data, and A8 the definition of a
+goal. Several of these assumptions are sloppy in the technical sense: the
+prediction depends on combinations of parameters that the data leave almost
+free, so a statement about a parameter is not by itself a statement about the
+prediction \citep{gutenkunst2007}.
+
+\begin{enumerate}[label=\textbf{A\arabic*},leftmargin=*,itemsep=6pt]
+
+\item \textbf{Rigid, non-deforming ball; no contact with post or net.}
+The model needs a constant radius and cross-section, and it stops at the goal
+plane, before the net. The Laws fix the circumference at \SIrange{68}{70}{cm}
+and the mass at \SIrange{410}{450}{g} \citep{ifab2025}, and the problem's
+$z_0=\SI{0.11}{m}$ gives $R=\SI{0.110}{m}$. At \SI{31}{m/s} the aerodynamic
+pressure $\tfrac12\rho v^2\approx\SI{0.6}{kPa}$ is of order one per cent of
+the \SIrange{0.6}{1.1}{atm} internal pressure, so the ball stays spherical to
+well under a millimetre. A \SI{2}{mm} error in the effective radius changes
+the cross-section by $2\Delta R/R\approx3.6$ per cent and the Magnus force,
+which carries a further factor $R$, by $3\Delta R/R\approx5.5$ per cent;
+applied to the \SI{0.67}{m} of entry the transverse forces produce, this is a
+few centimetres. Contact with the post or the net lies outside the model: it
+would move the crossing by at least the width of the post, and such
+trajectories are not described by the free-flight input.
+
+\item \textbf{Constant drag coefficient during the flight.}
+The speed falls from \SI{32.6}{m/s} at the kick to roughly \SI{25}{m/s} at
+the plane, a quarter of its value, so the Reynolds number stays above the drag
+crisis at $\mathrm{Re}\approx9\times10^4$--$1.3\times10^5$, where
+$C_D(\mathrm{Re})$ is flat at $0.17$--$0.22$ \citep{carre2005,goff2012}; that
+flatness, not the particular value, is what licenses a single $C_D$
+\citep{mehta1985}. Rather than fixing $C_D$, we hold
+it in a Gaussian prior centred at $0.25$ with standard deviation $0.15$, which
+covers $0.10$--$0.40$ at one standard deviation and contains both the
+$0.17$--$0.22$ plateau and the $0.21$ measured on a spinning ball
+\citep{asai2020}; the data then move all fits of this family into
+$C_D=0.32$--$0.38$, above the plateau; that disagreement is examined below. Shifting the prior median across the plateau moves the
+entry by about a centimetre, and the reason is structural: drag is
+antiparallel to the velocity, so at fixed launch velocity it cannot change
+$v_y/v_x$, and the lateral entry is $y=\SI{3.217}{m}$ for every $C_D$. Drag
+does change the flight time, and through it the height: $z=\SI{1.957}{m}$ with
+gravity alone against \SI{1.879}{m} with drag, a shift of \SI{8}{cm}.
+
+\item \textbf{Transverse force linear in spin, fixed axis, exponential decay.}
+The force is
+$\vect{F}_M=\tfrac12\rho A C_{L0}R(\vect{\omega}\times\vect{v})$ with
+$C_L=C_{L0}S_p$, $C_{L0}=1.0$, a constant spin axis, and
+$\omega(t)=\omega_0\ee^{-t/\tau}$ with $\tau=\SI{6}{s}$. This is the smallest
+closure that leaves the three spin components free and keeps the force smooth
+at zero spin. The linear law is supported by measurement: $C_L=0.21$, $0.24$,
+$0.29$ at $S_p=0.18$, $0.22$, $0.34$ gives $C_L/S_p=1.17$, $1.09$, $0.85$, so
+the adopted coefficient lies inside the measured range \citep{asai2020}. The
+main line does not need the spin: it fits the transverse force directly, and a
+unit lift slope turns its fitted magnitude into an implied spin of
+\SI{9.6}{rev/s}, inside the measured \SIrange{2}{10}{rev/s}. The earlier
+spinning-ball control, which did carry a spin vector and an exponential decay,
+found $\SI{52 \pm 22}{rad/s}$ ($8.3\pm3.5$~rev/s) with $\tau=\SI{6}{s}$; varying
+$\tau$ over \SIrange{2}{12}{s} there moved the entry by less than \SI{3}{cm},
+and varying its lift coefficient over $0.7$--$1.3$ moved it by \SI{15}{cm}. So
+the magnitude of the transverse force is what the data constrain; the
+mechanism that produces it is not. That is why the six-parameter fit models the
+force through two coefficients with a zero-centred prior of standard deviation
+\SI{0.008}{m^{-1}} rather than through a spin vector, and why a non-spinning
+ball's wake asymmetry \citep{texier2016} is a legitimate member of the same
+family.
+
+\item \textbf{Still air.}
+No wind term is included, because two fixes cannot separate a uniform wind
+from the launch velocity: the wind enters the drag as a relative velocity and
+is absorbed, to first order, by a change of $\vect{v}_0$. Refitting with a
+\SI{3}{m/s} crosswind and the launch velocity free moves the entry by
+\SI{0.007}{m}, so wind of this strength is inside the model envelope rather
+than a leading term. At fixed launch velocity a \SI{1}{m/s} crosswind
+would displace the entry by about \SI{3}{cm}, but the refit shows that the
+launch velocity absorbs almost all of it. A neglected wind is also model discrepancy rather
+than parameter uncertainty, and discrepancy can bias a prediction without
+widening its stated interval \citep{white2017}, so it is reported as a
+systematic and not folded into $\sigma_{\rm pos}$.
+
+\item \textbf{Ball radius \SI{0.110}{m}, mass \SI{0.430}{kg}.}
+The model converts aerodynamic coefficients into accelerations through $R$ and
+$m$. The Laws bracket the mass at \SIrange{410}{450}{g} and the circumference
+at \SIrange{68}{70}{cm}, i.e.\ $R=\SIrange{0.108}{0.111}{m}$
+\citep{ifab2025}. The problem's kick height selects $R=\SI{0.110}{m}$, and we
+use $m=\SI{0.430}{kg}$, the middle of the legal band. Both drag and Magnus
+accelerations scale as $1/m$, so the $\pm20$~g band, $\pm4.7$ per cent, scales
+the transverse part of the entry by the same fraction; at \SI{0.67}{m} that
+is about \SI{3}{cm}, $0.15$ of the \SI{0.20}{m} predictive standard deviation.
+The radius enters more weakly because it also enters the area: the
+$\pm\SI{2}{mm}$ band changes the accelerations by the few per cent estimated
+in A1 and the entry by a few centimetres.
+
+\item \textbf{Gaussian, independent, isotropic position noise with
+$\sigma_{\rm pos}=\SI{5}{mm}$.}
+The likelihood needs a noise model, and two fixes cannot estimate one. The
+coordinates are printed to \SI{0.01}{m}, so half of the last printed digit is
+the only defensible scale; this is not a camera calibration, and the
+$\pm\SI{1.5}{cm}$ of goal-line technology \citep{fifa2020glt} bounds a
+certified installation rather than these data. Open tracking is coarser: local
+cubic fits over nine-frame windows leave residuals of \SI{0.056}{m} and
+\SI{0.054}{m} in $x$ and $y$ for IDSSE and \SI{0.065}{m} and
+\SI{0.064}{m} for Metrica, so a goal-line fix is better than a centimetre and
+a broadcast feed worse, and the printed precision lies between them. The
+consequence scales as a second difference: the acceleration uncertainty
+$\sqrt6\,\sigma_{\rm pos}/\Delta t^2$ is \SI{4.9}{m/s^2} at \SI{5}{mm} and
+\SI{19.6}{m/s^2} at \SI{20}{mm}, where it exceeds the \SI{16}{m/s^2} signal
+itself, and across the twenty-five single-factor variants, four joint-stress cases and
+an independent replication, P(clean goal) ranges from $0.735$ at \SI{20}{mm} to
+$0.9997$ at \SI{2.5}{mm}, while the scenario means stay within
+$y=\SIrange{2.687}{3.130}{m}$ and inside the model envelope. The noise level
+is the largest single factor after the force law, and the ranking of the
+estimators survives the whole range.
+
+\item \textbf{The fixes are the ball centre, with no common offset.}
+The inversion differences positions, so a common offset is a systematic, not a
+random, error, and must be stated separately. The problem's
+$z_0=\SI{0.11}{m}$ shows that the coordinates refer to the centre. Because the
+acceleration is a second difference, a common offset $b$ in both fixes appears
+in the constant-acceleration fit as
+$2b(t_2-t_1)/[t_1t_2(t_1-t_2)]\approx-400b$ (with $b$ in metres): a
+\SI{1}{cm} offset would be read as \SI{4}{m/s^2}, a quarter of the
+\SI{16}{m/s^2} that the data imply, and would move the entry by \SI{0.21}{m},
+four-tenths of the \SI{0.54}{m} width of the literature-prior control. Below
+\SI{2.5}{mm} the effect is under \SI{5}{cm}. It is nevertheless
+the assumption most worth testing with a third fix or a known launch point,
+and it motivates the systematic line in the error budget.
+
+\item \textbf{Crossing of the ball centre; whole-ball scoring.}
+The crossing time and point are defined by the ball centre reaching
+$x=\SI{11.0}{m}$, and a goal is scored when the whole ball has passed inside
+the frame, so the clean-goal region is
+$|y|\le 3.66-0.11=\SI{3.55}{m}$ and $0.11\le z\le 2.44-0.11=\SI{2.33}{m}$
+\citep{ifab2025}. All probabilities quoted here use this whole-ball
+convention. The distinction is not cosmetic: it shrinks the effective target
+from $7.32~\text{m}\times2.44$~m to $7.10~\text{m}\times2.22$~m, a loss of
+\SI{12}{\percent} of its area. With the nominal predictive standard deviations
+$\sigma_y\approx\sigma_z\approx\SI{0.20}{m}$, the predicted centre lies
+$3.7\sigma$ inside the post and $1.9\sigma$ below the crossbar; removing one
+radius from each side lowers $P(\text{clean goal})$ from $0.993$ under a
+centre-only convention to $0.971$, a difference of two percentage points that
+comes almost entirely from the crossbar. A centre-only convention is not
+directly comparable with the numbers reported here.
+
+\end{enumerate}

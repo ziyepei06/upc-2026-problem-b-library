@@ -1,0 +1,83 @@
+%% =====================================================================
+%%  8 Strengths and weaknesses
+%%  Numbered claims, each carrying a number; aligned with FINAL_NUMBERS.md.
+%% =====================================================================
+\section{Strengths and Weaknesses}
+\label{sec:strengths}
+
+\subsection*{Strengths}
+
+\begin{enumerate}[label=S\arabic*,font=\bfseries,leftmargin=*,itemsep=3pt]
+  \item The answer is reproduced by an independently written pipeline: two
+        parameterisations of the transverse force (a seven-parameter spin
+        fit and the six-parameter perpendicular-plane fit) and two importance
+        samplers (\num{40000} and \num{131072} draws) place the crossing within
+        \SI{3}{mm} of each other and the goal probability within
+        \num{0.002}.
+  \item Model-form uncertainty is quantified adversarially rather than hidden:
+        \num{25} single-factor scenarios and four joint-stress cases move the goal
+        probability from \num{0.735} at \SI{20}{mm} position noise to \num{0.9997}
+        at \SI{2.5}{mm}; their \SI{95}{\percent} intervals union to the scenario
+        envelope $y\in[2.259,3.935]$~m, $z\in[1.169,2.698]$~m, which is reported
+        separately from the narrower model envelope $y\in[2.125,3.121]$~m built
+        from the calibrated intervals of the two complete models, and neither is
+        called a confidence interval.
+  \item The statistical intervals are calibrated, not assumed: \num{1000}
+        synthetic truths give coverage \num{0.917} in $y$ and \num{0.446} in
+        $z$ and the inflation factors $\lambda_y=0.96$, $\lambda_z=4.94$,
+        while the profile and Wald widths agree to \num{0.1} and \num{0.6} per
+        cent; a \num{500}-experiment validation covers the truth \num{0.918}
+        in $y$, \num{0.928} in $z$ and \num{0.852} jointly.
+  \item The model order is justified by the data rather than chosen: the
+        seven-parameter Jacobian is $6\times7$ of rank \num{6} with singular
+        values from \num{327} to \num{1.75}, prior shrinkages of \num{8.69},
+        \num{69.99} and \num{72.65} per cent imply \num{5.27} data-determined
+        parameters, so the six-parameter fit is the largest model the fixes
+        can support without a prior.
+  \item The method is real-time and comes with a design: fitting costs
+        \SI{8}{ms} plus \SI{0.5}{ms}, so the prediction is ready
+        \SI{0.11}{s} after the kick, \SI{135}{ms} before a keeper can resolve
+        height; at the adopted \SI{5}{mm} noise the problem's timings give
+        $\sigma_y=\SI{211}{mm}$ while the best pair, \SI{0.11}{s} and
+        \SI{0.31}{s}, gives \SI{12}{mm}, a factor \num{18}.
+\end{enumerate}
+
+\subsection*{Weaknesses}
+
+\begin{enumerate}[label=W\arabic*,font=\bfseries,leftmargin=*,itemsep=3pt]
+  \item Two fixes leave no redundancy, so a model with six free parameters has
+        no goodness-of-fit test: that is exactly the degenerate case M0 of
+        Table~\ref{tab:ladder}, whose residual is identically zero and whose
+        agreement with the data is therefore not evidence. The adopted model has
+        six parameters for six numbers only in the same counting sense; its
+        every fit is penalised by the priors, so the MAP residual
+        (\SI{1.45}{mm}) is not zero, but the model still has no spare degree of
+        freedom. Only the nested physical models can misfit, with rms
+        \SI{5.03}{mm} without a lateral force against \SI{0.54}{mm} with one.
+  \item The position noise is assumed, not measured: $\sigma_{\text{pos}} =
+        \SI{5}{mm}$ is half of the last printed digit of the given
+        coordinates, and it drives both the point and the probability---at
+        \SI{20}{mm} the goal probability falls to \num{0.735} and the scenario
+        means move $y$ over \SIrange{2.687}{3.130}{m}, and at the
+        \SIrange{55}{65}{mm} noise of open tracking data the fit is
+        prior-dominated.
+  \item The transverse coefficients are effective, not identified: the fit
+        returns $C_D=\num{0.347}$ (\num{0.378} in the prior-free
+        decomposition) against \num{0.19} to \num{0.22} measured in wind
+        tunnels at these speeds \citep{carre2005,goff2012}, so part of the transverse effect may be an
+        unmodelled along-track or wake force; the spin is never observed, and
+        the implied spin rate is a consequence of the assumed lift law rather
+        than a measurement.
+  \item The end-to-end validation is synthetic: no public three-dimensional
+        trajectory set with measured spin and a known crossing point exists, so
+        the coverage results test the estimator and not the physics, while real
+        tracking data enter only as measurement precision (median \SI{0.050}{m}
+        for broadcast 3-D reconstruction, \SI{5.4}{}--\SI{6.5}{cm} for open 2-D
+        tracking); the scenarios
+        vary one assumption at a time apart from four joint-stress cases, which
+        leaves correlated model error only partly explored, and the adopted-model
+        coverage rests on fifty and twenty-five trials, so it detects only gross
+        failures; wind is not separable from the launch velocity with two fixes,
+        its \SI{0.007}{m} refit effect being a property of the fit rather than of
+        the atmosphere.
+\end{enumerate}

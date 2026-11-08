@@ -1,0 +1,84 @@
+%% =====================================================================
+%%  Page 1 -- exactly four items. Nothing else.
+%%  Team number / problem letter / title / summary (<=300 words).
+%%  No names, no school, no date, no logo, no abstract heading other than
+%%  "Summary".
+%%
+%%  NOTE: the scenario and the numbers below are a worked example that is
+%%  consistent with code/blowdown.py. Replace them with your own problem.
+%% =====================================================================
+\begin{titlepage}
+%%  Layout after the MCM/ICM summary sheet (github.com/latexstudio-org/mcmthesis):
+%%  the two identifiers sit in opposite corners of a ruled band, the title takes
+%%  the optical centre, the summary follows. No running head on this page, so
+%%  nothing competes with the four items.
+\thispagestyle{empty}
+\vspace*{0.6cm}
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+  \raggedright
+  {\scshape Problem}\\[0.35em]{\LARGE\bfseries\problemltr}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.45\textwidth}
+  \raggedleft
+  {\scshape Team}\\[0.35em]{\LARGE\bfseries\teamnum}
+\end{minipage}\par
+
+\vspace{1.1em}
+\noindent\rule{\textwidth}{0.6pt}\par
+\vspace{1.7em}
+
+{\centering
+  {\LARGE\bfseries\setstretch{1.12}\papertitle\par}
+  \vspace{1.5em}
+  % 64 of the 74 gold papers call this block "Abstract"; the rule calls it
+  % "a summary ... which will be an abstract", so either word is fine.
+  % Change it back to Summary here if the team prefers the rule's wording.
+  {\large\scshape Abstract}\par
+}
+\vspace{0.9em}
+
+%%  A 200-300 word block at full width reads as a wall; the small inset gives
+%%  it a measure of about 80 characters and marks it as a separate element.
+{\setlength{\leftskip}{0.05\textwidth}%
+ \setlength{\rightskip}{0.05\textwidth}%
+ \setlength{\parindent}{0pt}%
+ \setstretch{1.04}%
+A penalty kick is decided before the ball has travelled three metres, and the
+goalkeeper's side is committed about $0.1$ s before the kick. We ask whether the
+goal-plane crossing point can be recovered from two measured positions, at
+$0.05$ s and $0.10$ s after the kick. A six-parameter transverse-force model,
+comprising a launch velocity, a drag coefficient and two transverse
+coefficients, is fitted to the six coordinates by our own damped Gauss-Newton
+routine at an assumed noise of $5$ mm. The fitted trajectory crosses the plane
+at $y=2.785$ m, $z=1.945$ m, $t=0.399$ s, $0.87$ m inside the post and $0.50$ m
+below the crossbar, with $90$ per cent intervals $y\in[2.455,3.121]$ m and
+$z\in[1.617,2.276]$ m; the whole ball passes inside the frame with probability
+$0.971$. The four complete models place the point between $2.549$ and
+$2.785$ m, and the model envelope of calibrated intervals is
+$y\in[2.125,3.121]$ m.
+
+Imposing extreme assumptions widens this to a scenario envelope,
+$y\in[2.259,3.935]$ m and $z\in[1.169,2.698]$ m, which is a stress range and not
+a confidence interval. Coverage is tested on the estimator itself, with truths
+from the same law and from a law containing an extra vertical force, and the
+answer is unchanged when common-mode offsets or time-stamp errors are admitted.
+The method
+is also a design statement: the two epochs of the problem give
+$\sigma_y=211$ mm, while fixes at $0.11$ s and $0.31$ s give $12$ mm, a factor of
+$18$. The prediction is ready $0.11$ s after the kick, $135$ ms before the
+goalkeeper can resolve height and $0.29$ s before the ball arrives.\par}
+
+\ifkeywords
+  \vspace{1.0em}
+  \begingroup
+  \setlength{\leftskip}{0.05\textwidth}%
+  \setlength{\rightskip}{0.05\textwidth}%
+  \setlength{\parindent}{0pt}%
+  \noindent\textbf{Keywords:}~\keywords\par
+  \endgroup
+\fi
+
+\vfill
+\end{titlepage}
+\setcounter{page}{2}% titlepage resets the page counter; keep numbering continuous
